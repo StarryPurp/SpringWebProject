@@ -36,6 +36,7 @@
 </head>
 <body>
 <%@ include file="../include/member_menu.jsp" %>
+<%@ include file="../login/sessionCheck.jsp" %>
 
 <h2>게시글 작성</h2>
 
@@ -49,10 +50,13 @@
         내용
         <textarea name="content" id="content" rows="4" cols="80" placeholder="내용을 입력해주세요"></textarea>
     </div>
+    
+    <!--  
     <div>
         이름
         <input name="writer" id="writer" placeholder="이름을 입력해주세요">
     </div> 
+    -->
     <div style="width:650px; text-align: center;">
         <button type="button" id="btnSave">확인</button>
         <button type="reset">취소</button>

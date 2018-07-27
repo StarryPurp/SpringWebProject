@@ -68,16 +68,17 @@
     </div>
     <div>
         이름
-        <input name="writer" value="${dto.writer}" placeholder="이름을 입력해주세요"> 
-       
+      <!--   <input name="writer" value="${dto.writer}" placeholder="이름을 입력해주세요"> -->        
     </div>
+    ${dto.writer}
+    <input type="hidden" name="writer" id="writer" value="${dto.bno}">
     <div style="width:650px; text-align: center;">
         <!-- 게시물번호를 hidden으로 처리 -->
         <input type="hidden" name="bno" value="${dto.bno}">
-    
-        <button type="button" id="btnUpdete">수정</button>
+    <c:if test="${sessionScope.userId==dto.writer }">
+        <button type="button" id="btnUpdate">수정</button>
         <button type="button" id="btnDelete">삭제</button>
-            
+      </c:if>
     </div>
     
 </form>

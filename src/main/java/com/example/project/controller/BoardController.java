@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,7 +26,7 @@ public class BoardController {
     
     // 01. 게시글 목록
     @RequestMapping("list.do")
-    public ModelAndView list(@RequestParam(defaultValue="title")String searchOption,@RequestParam(defaultValue="null")String key) {
+    public ModelAndView list(@RequestParam(defaultValue="title")String searchOption,@RequestParam(defaultValue="")String key) {
         List<BoardVO> list = boardService.listAll(searchOption, key);
         int count=boardService.countArticle(searchOption, key);
         // ModelAndView - 모델과 뷰
@@ -35,9 +36,9 @@ public class BoardController {
         map.put("count",count);
         map.put("searchOption",searchOption);
         map.put("keyword", key);
-        map.put("map", map);
+        
         mav.setViewName("board/list"); // 뷰를 list.jsp로 설정
-        mav.addObject("list", list); // 데이터를 저장
+        mav.addObject("map", map); // 데이터를 저장
         return mav; // list.jsp로 List가 전달된다.
     }
     
@@ -49,7 +50,10 @@ public class BoardController {
     
     //02-2 게시글 입력
     @RequestMapping("insert.do")
-    public String insert(@ModelAttribute BoardVO vo) {
+    public String insert(@ModelAttribute BoardVO vo,HttpSession session) {
+    	String writer=(String)session.getAttribute("userId");
+    	vo.setWriter(writer);
+    	
     	boardService.create(vo);
     	return "redirect:list.do";
     }
