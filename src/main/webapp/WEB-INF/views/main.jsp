@@ -4,13 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<link href="${pageContext.request.contextPath }/resources/css/first.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/bootstrap.css" rel="stylesheet">
 <title>Insert title here</title>
 </head>
 <body>
+
 <header>
 <div class="icon"><img src="resources/images/caticon.png"></div>
-<div class="title">고먐미 관잘 일기</div>
+<div class="title">고독한 교내 미식가</div>
 </header>
 <div class="nav">
 <ul>
@@ -21,5 +22,7 @@
 </ul>
 
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/bootstrap.js"></script>
 </body>
 </html>

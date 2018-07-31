@@ -3,6 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="${pageContext.request.contextPath }/resources/css/bootstrap.css" rel="stylesheet">
 <title>게시글 작성</title>
 <%@ include file="../include/member_header.jsp" %>
 <script>

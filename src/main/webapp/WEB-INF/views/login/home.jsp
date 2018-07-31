@@ -3,6 +3,7 @@
 <head>
     <title>Home</title>
 <%@ include file="../include/member_header.jsp" %>
+<link href="${pageContext.request.contextPath }/resources/css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
 <%@ include file="../include/member_menu.jsp" %>
