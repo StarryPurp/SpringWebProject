@@ -25,6 +25,7 @@ public class BoardServiceImpl implements BoardService {
 		vo.setTitle(title);
 		vo.setContent(content);
 		vo.setWriter(writer);
+		System.out.println(writer);
 		boardDao.create(vo);
 				
 	}
@@ -35,9 +36,6 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		return boardDao.read(bno);
 	}
-	
-	
-	
  //3. ¼öÁ¤
 	@Override
 	public void update(BoardVO vo) {
@@ -52,9 +50,9 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> listAll(int start,int end,String searchOption,String key) {
+	public List<BoardVO> listAll(int start,int end,String searchOption, String keyword) {
 		// TODO Auto-generated method stub
-		return boardDao.listAll(start,end,searchOption,key);
+		return boardDao.listAll(start,end,searchOption, keyword);
 	}
 
 	@Override
@@ -64,11 +62,12 @@ public class BoardServiceImpl implements BoardService {
 		
 	}
 
+	
 
 	@Override
-	public int countArticle(String searchOption, String key) {
+	public int countArticle(String searchOption, String keyword) {
 		// TODO Auto-generated method stub
-		return boardDao.countArticle(searchOption, key);
+		return boardDao.countArticle(searchOption, keyword);
 	}
 	
 

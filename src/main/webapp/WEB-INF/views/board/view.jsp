@@ -8,6 +8,23 @@
 <script>
     $(document).ready(function(){
     	
+    	//댓글 관련, 댓글 등록이 되지 않는다...
+    	$("#btnReply").click(function(){
+            var replytext=$("#replytext").val();
+            var bno="${dto.bno}"
+            var param="replytext="+replytext+"&bno="+bno;
+            $.ajax({                
+                type: "post",
+                url: "${path}/reply/insert.do",
+                data: param,
+                success: function(){
+                    alert("댓글이 등록되었습니다.");
+                    listReply2();
+                }
+            });
+        });
+    	
+    	
     	$("#btnList").click(function(){
     		
     		location.href="${path}/board/list.do?curPage=${curPage}&searchOption=${searchOption}&keyword=${keyword}";
@@ -49,7 +66,42 @@
             document.form1.submit();
             
         });
-    });
+    })
+    	
+    function listReply2(){
+    	$.ajax({
+    		
+    		type:"post",
+    		url:"${path}/reply/listJson.do?bno=${dto.bno}",
+    		success:function(result)
+    		{
+    			var output="<table>";
+    			for(var i in result){
+    				output +="<tr>";
+    				output +="<td>"+ result[i].userName;
+    				output +="("+changeDate(result[i].regdate)+")<br>";
+    				output += result[i].replytext+"</td>";
+    				output += "</tr>";
+    			}
+    			output += "</table>";
+    			$("#listReply").html(output);
+    		}
+    	});
+    	
+    	
+    }
+    
+    function changeDate(date){
+    	date=new Date(parseInt(date));
+    	year=date.getFullYear();
+    	month=date.getMonth();
+    	day=date.getDate();
+    	hour=date.getHours();
+    	minute=date.getMinutes();
+    	second=date.getSeconds();
+    	strDate=year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second;
+    	return strDate;
+    }
           
 </script>
 </head>
@@ -76,7 +128,7 @@
         이름
       <!--   <input name="writer" value="${dto.writer}" placeholder="이름을 입력해주세요"> -->        
     </div>
-    ${dto.writer}
+     ${dto.writer} 
     <input type="hidden" name="writer" id="writer" value="${dto.bno}">
     <div style="width:650px; text-align: center;">
         <!-- 게시물번호를 hidden으로 처리 -->
@@ -90,6 +142,20 @@
     </div>
     
 </form>
+    <div style="width:600px; text-align:center;">
+    	<c:if test="${sessionScope.userId !=null }">
+    		<textarea rows="5" cols="80" id="replytext" placeholder="댓글을 작성하세요"></textarea><br>
+    		<button type="button" id="btnReply">댓글 쓰기</button>
+    	
+    	</c:if>
+    
+    </div>
+    
+    
+    <div id="listReply">
+    
+    
+    </div>
     
 </body>
 </html>

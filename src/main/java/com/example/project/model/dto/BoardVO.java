@@ -9,14 +9,9 @@ public class BoardVO {
   private String writer;
   private Date regdate;
   private int viewcnt;
+  
   private String userName;
   
-public String getUserName() {
-	return userName;
-}
-public void setUserName(String userName) {
-	this.userName = userName;
-}
 public int getBno() {
 	return bno;
 }
@@ -60,6 +55,12 @@ public String toString() {
            + content + ", writer=" + writer
             + ", regdate=" + regdate + ", viewcnt=" 
            + viewcnt + "]";
+}
+public String getUserName() {
+	return userName;
+}
+public void setUserName(String userName) {
+	this.userName = userName;
 }
     
   

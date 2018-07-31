@@ -15,9 +15,9 @@ public interface BoardService {
     // 04. 게시글 삭제
     public void delete(int bno) ;
     // 05. 게시글 전체 목록
-    public List<BoardVO> listAll(int start, int end,String searchOption,String key);
+    public List<BoardVO> listAll(int start,int end,String searchOption, String keyword);
     // 06. 게시글 조회
     public void increaseViewcnt(int bno) ;
-    //07. 게시글 갯구(레코드 수)
-    public int countArticle(String searchOption,String key);
+    
+    public int countArticle(String searchOption, String keyword);
 }

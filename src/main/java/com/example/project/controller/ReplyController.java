@@ -1,10 +1,13 @@
 package com.example.project.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.project.model.dto.ReplyVO;
@@ -21,5 +24,11 @@ public class ReplyController {
 		String userId=(String)session.getAttribute("userId");
 		vo.setReplyer(userId);
 		replyService.create(vo);
+	}
+	
+	@RequestMapping("listJson.do")
+	public List<ReplyVO> listJson(@RequestParam int bno){
+		List<ReplyVO> list=replyService.list(bno);
+		return list;
 	}
 }
