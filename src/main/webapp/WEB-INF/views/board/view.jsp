@@ -7,6 +7,12 @@
 <%@ include file="../include/member_header.jsp" %>
 <script>
     $(document).ready(function(){
+    	
+    	$("#btnList").click(function(){
+    		
+    		location.href="${path}/board/list.do?curPage=${curPage}&searchOption=${searchOption}&keyword=${keyword}";
+    	})
+    	
         
         // 게시글 삭제 버튼 클릭이벤트
         $("#btnDelete").click(function(){
@@ -78,7 +84,9 @@
     <c:if test="${sessionScope.userId==dto.writer }">
         <button type="button" id="btnUpdate">수정</button>
         <button type="button" id="btnDelete">삭제</button>
+        
       </c:if>
+      <button type="button" id="btnList">목록</button>
     </div>
     
 </form>

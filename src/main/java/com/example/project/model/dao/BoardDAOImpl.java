@@ -43,10 +43,12 @@ public class BoardDAOImpl implements BoardDAO {
     }
     // 05. 게시글 전체 목록
     @Override
-    public List<BoardVO> listAll(String searchOption,String key)  {
-    	Map<String, String> map=new HashMap<String, String>();
+    public List<BoardVO> listAll(int start, int end,String searchOption,String key)  {
+    	Map<String, Object> map=new HashMap<String, Object>();
     	map.put("searchOption", searchOption);
     	map.put("keyword", key);
+    	map.put("start", start);
+    	map.put("end", end);
         return sqlSession.selectList("board.listAll",map);
     }
     // 게시글 조회수 증가

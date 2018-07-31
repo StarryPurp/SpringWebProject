@@ -27,5 +27,17 @@ li a:hover{
 
 header{
 	font-size: 15px;
+	display:inline-block;
+	
+}
+
+.icon img{
+	width:100px;
+	height:100px;
+	
+}
+
+.title{
+	position: relative;
 	
 }

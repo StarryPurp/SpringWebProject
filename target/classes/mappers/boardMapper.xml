@@ -23,7 +23,12 @@
     		order by
     			bno desc, 
     			regdate desc
+    			<include refid="paging"></include>
    		</select> 	
+   		
+   		<sql id="paging">
+   			limit ${start},${end}
+   		</sql>
    		
    		
     	<!-- 게시글 갯수 -->

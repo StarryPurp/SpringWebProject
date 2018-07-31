@@ -19,7 +19,7 @@ public interface BoardDAO {
 	public void delete(int bno);
 	
 	//5. 게시글 전체 목록보기
-	public List<BoardVO> listAll(String searchOption,String key); 
+	public List<BoardVO> listAll(int start,int end,String searchOption,String key); 
 	
 	//6. 게시글 조회수 증가
 	public void increaseViewcnt(int bno);

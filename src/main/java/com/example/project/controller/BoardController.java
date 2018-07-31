@@ -14,41 +14,53 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.project.model.dto.BoardVO;
+import com.example.project.service.BoardPager;
 import com.example.project.service.BoardService;
-@Controller    // ÇöÀç Å¬·¡½º¸¦ ÄÁÆ®·Ñ·¯ ºó(bean)À¸·Î µî·Ï
+@Controller    // í˜„ì¬ í´ë˜ìŠ¤ë¥¼ ì»¨íŠ¸ë¡¤ëŸ¬ ë¹ˆ(bean)ìœ¼ë¡œ ë“±ë¡
 @RequestMapping("/board/*")
 public class BoardController {
     
-    // ÀÇÁ¸°ü°è ÁÖÀÔ => BoardServiceImpl »ı¼º
-    // IoC ÀÇÁ¸°ü°è ¿ªÀü
+    // ì˜ì¡´ê´€ê³„ ì£¼ì… => BoardServiceImpl ìƒì„±
+    // IoC ì˜ì¡´ê´€ê³„ ì—­ì „
     @Inject
     BoardService boardService;
     
-    // 01. °Ô½Ã±Û ¸ñ·Ï
+    // 01. ê²Œì‹œê¸€ ëª©ë¡
     @RequestMapping("list.do")
-    public ModelAndView list(@RequestParam(defaultValue="title")String searchOption,@RequestParam(defaultValue="")String key) {
-        List<BoardVO> list = boardService.listAll(searchOption, key);
+    public ModelAndView list(@RequestParam(defaultValue="title")String searchOption,@RequestParam(defaultValue="")String key,
+    		@RequestParam(defaultValue="1")int curPage 
+    		) {
+        
         int count=boardService.countArticle(searchOption, key);
-        // ModelAndView - ¸ğµ¨°ú ºä
+        
+        BoardPager boardPager=new BoardPager(count, curPage);
+        int start=boardPager.getPageBegin();
+        int end=boardPager.getPageEnd();
+        
+        List<BoardVO> list = boardService.listAll(start,end,searchOption, key);
+        
+        // ModelAndView - ëª¨ë¸ê³¼ ë·°
         ModelAndView mav = new ModelAndView();
         Map<String,Object> map=new HashMap<String, Object>();
         map.put("list",list);
         map.put("count",count);
         map.put("searchOption",searchOption);
         map.put("keyword", key);
+        map.put("boardPager", boardPager);
         
-        mav.setViewName("board/list"); // ºä¸¦ list.jsp·Î ¼³Á¤
-        mav.addObject("map", map); // µ¥ÀÌÅÍ¸¦ ÀúÀå
-        return mav; // list.jsp·Î List°¡ Àü´ŞµÈ´Ù.
+        
+        mav.addObject("map", map); // ë°ì´í„°ë¥¼ ì €ì¥
+        mav.setViewName("board/list"); // ë·°ë¥¼ list.jspë¡œ ì„¤ì •
+        return mav; // list.jspë¡œ Listê°€ ì „ë‹¬ëœë‹¤.
     }
     
-    //02-1 °Ô½Ã±Û ÀÛ¼º
+    //02-1 ê²Œì‹œê¸€ ì‘ì„±
     @RequestMapping("write.do")
     public String write() {
     	return "board/write";
     }
     
-    //02-2 °Ô½Ã±Û ÀÔ·Â
+    //02-2 ê²Œì‹œê¸€ ì…ë ¥
     @RequestMapping("insert.do")
     public String insert(@ModelAttribute BoardVO vo,HttpSession session) {
     	String writer=(String)session.getAttribute("userId");
@@ -60,7 +72,7 @@ public class BoardController {
     
       
     
-    //3. »ó¼¼º¸±â
+    //3. ìƒì„¸ë³´ê¸°
     @RequestMapping("view.do")
     public ModelAndView view(@RequestParam int bno) {
     	boardService.increaseViewcnt(bno);
@@ -71,7 +83,7 @@ public class BoardController {
     }
     
     
-    //4. ¼öÁ¤
+    //4. ìˆ˜ì •
     @RequestMapping("update.do")
     public String update(@ModelAttribute BoardVO vo) {
     	boardService.update(vo);
@@ -88,7 +100,7 @@ public class BoardController {
     
     
     
-    //5. »èÁ¦ 
+    //5. ì‚­ì œ 
     @RequestMapping("delete.do")
     public String delete(@RequestParam int bno) {
     	boardService.delete(bno);

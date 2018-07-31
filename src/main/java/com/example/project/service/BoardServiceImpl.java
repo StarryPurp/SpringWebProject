@@ -52,9 +52,9 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> listAll(String searchOption,String key) {
+	public List<BoardVO> listAll(int start,int end,String searchOption,String key) {
 		// TODO Auto-generated method stub
-		return boardDao.listAll(searchOption,key);
+		return boardDao.listAll(start,end,searchOption,key);
 	}
 
 	@Override

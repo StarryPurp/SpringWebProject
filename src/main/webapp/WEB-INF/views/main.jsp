@@ -8,14 +8,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-<header>¸ÞÀÎ ¿¬½ÀÀÔ´Ï´Ù.<br />
-${msg}</header>
+<header>
+<div class="icon"><img src="resources/images/caticon.png"></div>
+<div class="title">ê³ ë¨ë¯¸ ê´€ìž˜ ì¼ê¸°</div>
+</header>
 <div class="nav">
 <ul>
-<li><a href="member/write.do"> È¸¿øµî·Ï </a></li>
-<li><a href="board/write.do">°Ô½ÃÆÇ</a></li>
-<li><a href="login/login.do">·Î±×ÀÎ</a></li>
-<li><a href="member/list.do">¸ñ·Ï</a></li>
+<li><a href="member/write.do"> íšŒì›ë“±ë¡ </a></li>
+<li><a href="board/write.do">ê²Œì‹œíŒ</a></li>
+<li><a href="login/login.do">ë¡œê·¸ì¸</a></li>
+<li><a href="member/list.do">ëª©ë¡</a></li>
 </ul>
 
 </div>
