@@ -8,9 +8,10 @@
 <%@ include file="../include/member_header.jsp" %>
 <script>
     $(document).ready(function(){
-    	
+    	 listReply();
     	//댓글 관련, 댓글 등록이 되지 않는다...
     	$("#btnReply").click(function(){
+    		
             var replytext=$("#replytext").val();
             var bno="${dto.bno}"
             var param="replytext="+replytext+"&bno="+bno;
@@ -20,7 +21,8 @@
                 data: param,
                 success: function(){
                     alert("댓글이 등록되었습니다.");
-                    listReply2();
+                    //listReply2();
+                    listReply();
                 }
             });
         });
@@ -69,6 +71,11 @@
         });
     })
     	
+    
+    
+    
+    
+    
     function listReply2(){
     	$.ajax({
     		
@@ -91,6 +98,18 @@
     	
     	
     }
+
+    
+    function listReply(){
+    	$.ajax({
+    		type:"post",
+    		url:"${path}/reply/list.do?bno=${dto.bno}",
+    				success:function(result){
+    					$("#listReply").html(result);
+    				}
+    		
+    	})
+    }
     
     function changeDate(date){
     	date=new Date(parseInt(date));
@@ -103,6 +122,7 @@
     	strDate=year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second;
     	return strDate;
     }
+    
           
 </script>
 </head>

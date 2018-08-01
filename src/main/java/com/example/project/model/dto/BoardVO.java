@@ -9,8 +9,15 @@ public class BoardVO {
   private String writer;
   private Date regdate;
   private int viewcnt;
+  private int recnt;
   
-  private String userName;
+  public int getRecnt() {
+	return recnt;
+}
+public void setRecnt(int recnt) {
+	this.recnt = recnt;
+}
+private String userName;
   
 public int getBno() {
 	return bno;

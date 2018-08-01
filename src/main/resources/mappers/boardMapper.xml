@@ -20,7 +20,7 @@
     <select id="listAll" resultType="com.example.project.model.dto.BoardVO">
     
         SELECT 
-            bno,title,content,b.regdate,viewcnt,user_name as userName
+            bno,title,content,b.regdate,viewcnt,user_name as userName,(select count(*) from tbl_reply where bno=b.bno) as recnt
         FROM 
             tbl_board b, tbl_member m
             <include refid="search"></include>

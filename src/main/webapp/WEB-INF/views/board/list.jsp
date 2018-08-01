@@ -53,22 +53,34 @@
     
     
      ${map.count}개의 게시물이 있습니다.
-        <table border="1" width="600px">
-        <tr>
-            <th>번호</th>
-            <th>제목</th>
-            <th>이름</th>
-            <th>작성일</th>
-            <th>조회수</th>
-        </tr>
-        <c:forEach var="row" items="${map.list}">
-        <tr>
-            <td>${row.bno}</td>
-          
-            
+       
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>번호</th>
+            			<th>제목</th>
+           				 <th>이름</th>
+            			<th>작성일</th>
+            			<th>조회수</th>
+					</tr>
+				</thead>
+				 <c:forEach var="row" items="${map.list}">
+				<tbody>
+        		<tr>
+           		 <td>${row.bno}</td>
               <td>
             <!--   <a href="${path}/board/view.do?bno=${row.bno }"> ${row.title }</a> -->
-               <a href="${path}/board/view.do?bno=${row.bno }&curPage=${map.boardPager.curPage }&searchOption=${map.searchOption }&keyword=${map.keyword }">${row.title }</a> 
+               <a href="${path}/board/view.do?bno=${row.bno }&curPage=${map.boardPager.curPage }&searchOption=${map.searchOption }&keyword=${map.keyword }">
+               ${row.title }
+               <c:if test="${row.recnt >0}">
+               	<span style="color:red;">
+               	(${row.recnt})
+               	</span>
+               </c:if>
+               </a> 
               </td>                    
          
             <td>${row.userName}</td>
@@ -78,11 +90,19 @@
             </td>
             <td>${row.viewcnt}</td>
         </tr>    
-        </c:forEach>
-        
-        <tr>
-          <td colspan="5">
-            <c:if test="${map.boardPager.curBlock>1}"> 
+				</tbody>
+				</c:forEach>
+				
+				
+				
+			</table>
+			<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<nav>
+				<ul class="pagination">
+					<li class="page-item">
+						<c:if test="${map.boardPager.curBlock>1}"> 
               <a href="javascript:list('1')">[처음 ]</a>
              </c:if>
              
@@ -113,10 +133,16 @@
         <c:if test="${map.boardPager.curPage<=map.boardPager.totPage}">
         <a href="javascript:list('${map.boardPager.totPage}')"> [끝]</a>
         </c:if>
-            </td>
-               
-        </tr>
-       
-</table>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+			
+			
+		</div>
+	</div>
+</div>
 </body>
 </html>

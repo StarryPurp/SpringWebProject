@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.example.project.model.dto.ReplyVO;
 import com.example.project.service.ReplyService;
@@ -30,5 +31,15 @@ public class ReplyController {
 	public List<ReplyVO> listJson(@RequestParam int bno){
 		List<ReplyVO> list=replyService.list(bno);
 		return list;
+	}
+	
+	@RequestMapping("list.do")
+	public ModelAndView list(@RequestParam int bno, ModelAndView mav) {
+		List<ReplyVO> list=replyService.list(bno);
+		
+		System.out.println("listlllll");
+		mav.setViewName("board/replyList");
+		mav.addObject("list",list);
+		return mav;
 	}
 }
