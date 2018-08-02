@@ -9,4 +9,5 @@ public interface ReplyDAO {
 	public void create(ReplyVO vo);
 	public void update(ReplyVO vo);
 	public void delete(int rno);
+	public ReplyVO detail(int rno);
 }

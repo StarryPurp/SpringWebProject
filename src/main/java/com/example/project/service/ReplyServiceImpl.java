@@ -29,12 +29,20 @@ public class ReplyServiceImpl implements ReplyService{
 
 	@Override
 	public void update(ReplyVO vo) {
+		replyDao.update(vo);
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void delete(int rno) {
+		// TODO Auto-generated method stub
+		replyDao.delete(rno);
+	}
+
+	@Override
+	public ReplyVO detail(int rno) {
+		return replyDao.detail(rno);
 		// TODO Auto-generated method stub
 		
 	}

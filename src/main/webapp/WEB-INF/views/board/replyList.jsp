@@ -16,10 +16,16 @@
 		${row.userName }(<fmt:formatDate value="${row.regdate }" pattern="yyyy-MM-dd HH:mm:ss"/>)
 		<br>
 		${row.replytext }
+		
+		<br>
+		<c:if test="${sessionScope.userId==row.replyer }">
+			<input type="button" id="btnModify" value="수정" onclick="showReplyModify('${row.rno}')">
+		</c:if>
 		<hr>
 	</td>
 	</tr>
 	</c:forEach>
+	<div id="modifyReply"></div>
 
 </table>
 

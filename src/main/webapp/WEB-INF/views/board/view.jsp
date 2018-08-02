@@ -123,8 +123,29 @@
     	return strDate;
     }
     
-          
+    
+    function showReplyModify(rno){
+    	$.ajax({
+    		type:"get",
+    		url:"${path}/reply/detail/"+rno,
+    		success: function(result){
+    			$("#modifyReply").html(result);
+    			//태그,css("속성",값)
+    			$("#modifyReply").css("visibility","visible");
+    		}
+    	})
+    }
 </script>
+<style>
+	#modifyReply{
+		width:600px;
+		height:130px;
+		background-color: gray;
+		padding: 10px;
+		z-index: 10;
+		visibility: hidden;
+	}
+</style>
 </head>
 <body>
 <%@ include file="../include/member_menu.jsp" %>
@@ -177,6 +198,8 @@
     
     
     </div>
+    
+    
     
 </body>
 </html>

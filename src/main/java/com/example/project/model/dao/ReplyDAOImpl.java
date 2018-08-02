@@ -29,13 +29,19 @@ public class ReplyDAOImpl implements ReplyDAO{
 	@Override
 	public void update(ReplyVO vo) {
 		// TODO Auto-generated method stub
-		
+		sqlSession.update("reply.updateReply",vo);
 	}
 
 	@Override
 	public void delete(int rno) {
 		// TODO Auto-generated method stub
-		
+		sqlSession.delete("reply.deleteReply",rno);
+	}
+
+	@Override
+	public ReplyVO detail(int rno) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("reply.detailReply", rno);
 	}
 
 }
