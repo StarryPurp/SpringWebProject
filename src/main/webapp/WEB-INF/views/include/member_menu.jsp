@@ -18,7 +18,11 @@
        				 </li>
    					 </c:when>
 				<c:otherwise>
+				<div style="
+					float: right;
+				">
 				${sessionScope.userName}님이 로그인중입니다.
+				</div>
 				<li class="nav-item">
 					
         			<a href="${path}/login/logout.do">로그아웃</a>

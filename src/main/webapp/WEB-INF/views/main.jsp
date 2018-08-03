@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="${pageContext.request.contextPath }/resources/css/bootstrap.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/others.css" rel="stylesheet">
 <title>Insert title here</title>
 </head>
 <body>
@@ -26,18 +27,22 @@
 					<a href="member/list.do">목록</a>
 				</li>
 			</ul>
+			<div>
 			<h3 class="text-center text-primary">
 				고독한 교내 미식가
 			</h3>
+			</div>
 			<div style="background-image:url('resources/images/bgmeal.jpg');
 						background-repeat:no-repeat;
 						background-size:cover;
 						height:500px;
-						">
+						z-index: 20;	">
 			</div>
+			<div>
 			<p class="text-center">
 				학교 어딘가에서 홀로 급식을 맛보고 있는 고독한 사람들을 위해.
 			</p>
+			</div>
 		</div>
 	</div>
 </div>

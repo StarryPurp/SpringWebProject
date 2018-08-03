@@ -4,6 +4,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="${pageContext.request.contextPath }/resources/css/bootstrap.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/others.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/others.css" rel="stylesheet">
 <title>댓글</title>
 <%@ include file="../include/member_header.jsp" %>
 </head>
@@ -25,6 +27,7 @@
 					$("#modifyReply").css("visibility","hidden");
 					//업데이트한 댓글 목록 제시
 					//
+					listReply();
 					
 				}
 			}

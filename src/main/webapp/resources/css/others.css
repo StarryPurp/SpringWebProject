@@ -1,0 +1,17 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon:400');
+
+body{
+	font-family: Do Hyeon;
+	;
+}
+p{
+	font-size:large;
+	word-spacing: 10px;
+	padding-top: 50px;
+}
+.row{
+	background-image:url('resources/images/bgimg.jpg');
+	background-repeat:no-repeat;
+	z-index: 10
+}

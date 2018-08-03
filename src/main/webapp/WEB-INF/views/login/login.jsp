@@ -4,6 +4,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="${pageContext.request.contextPath }/resources/css/bootstrap.css" rel="stylesheet">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/skel.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style-xlarge.css" />
+<link href="${pageContext.request.contextPath }/resources/css/others.css" rel="stylesheet">
 <title>로그인페이지</title>
 <%@ include file="../include/member_header.jsp" %>
 <script>
@@ -33,33 +37,36 @@
 </head>
 <body>
 <%@ include file="../include/member_menu.jsp" %>
-<h2>로그인</h2>
+
+   <div class="col-md-12">
+    <h2>로그인</h2>
     <form name="form1" method="post">
-        <table border="1" width="400px">
-            <tr>
-                <td>아이디</td>
-                <td><input name="userId" id="userId"></td>
-            </tr>
-            <tr>
-                <td>비밀번호</td>
-                <td><input type="password" name="userPw" id="userPw"></td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center">
-                    <button type="button" id="btnLogin">로그인</button>
-                <c:if test="${msg == 'failure'}">
-                    <div style="color: red">
-                        아이디 또는 비밀번호가 일치하지 않습니다.
-                    </div>
-                </c:if>
-                <c:if test="${msg == 'logout'}">
-                    <div style="color: red">
-                        로그아웃되었습니다.
-                    </div>
-                </c:if>
-                </td>
-            </tr>
-        </table>
-    </form>
+								<div class="row uniform 50%">
+									<div class="6u 12u$(4)">
+										<input type="text" name="userId" id="userId" placeholder="아이디" />
+									</div>
+									<div class="6u$ 12u$(4)">
+										<input input type="password" name="userPw" id="userPw" placeholder="비밀번호" />
+									</div>
+									<div class="12u$">
+										<ul class="actions">
+											<li><input type="button" id="btnLogin" value="로그인"></li>
+										</ul>
+									</div>
+									<div class="12u$">
+									<c:if test="${msg == 'failure'}">
+									<div style="color: red">
+										 아이디 또는 비밀번호가 일치하지 않습니다.
+									</div>
+									</c:if>
+								 <c:if test="${msg == 'logout'}">
+								 <div style="color: red">
+									 로그아웃되었습니다.
+								 </div>
+								</c:if>
+									</div>
+								</div>
+							</form>
+							</div>
 </body>
 </html>

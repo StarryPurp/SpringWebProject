@@ -4,6 +4,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="${pageContext.request.contextPath }/resources/css/bootstrap.css" rel="stylesheet">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/skel.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style-xlarge.css" />
+<link href="${pageContext.request.contextPath }/resources/css/others.css" rel="stylesheet">
 <title>게시글 작성</title>
 <%@ include file="../include/member_header.jsp" %>
 <script>
@@ -140,7 +144,7 @@
 	#modifyReply{
 		width:600px;
 		height:130px;
-		background-color: gray;
+		background-color: #9EFFFF;
 		padding: 10px;
 		z-index: 10;
 		visibility: hidden;
@@ -149,6 +153,7 @@
 </head>
 <body>
 <%@ include file="../include/member_menu.jsp" %>
+<div class="col-md-12">
 <h2>게시글 보기</h2>
 <form name="form1" method="post">
     <div>        <!-- 원하는 날짜형식으로 출력하기 위해 fmt태그 사용 -->
@@ -156,22 +161,27 @@
                 <!-- 날짜 형식 => yyyy 4자리연도, MM 월, dd 일, a 오전/오후, HH 24시간제, hh 12시간제, mm 분, ss 초 -->
     </div>
     <div>
+    </div>
         조회수 : ${dto.viewcnt}
     </div>
-    <div>
-        제목
-        <input name="title" id="title" size="80" value="${dto.title}" placeholder="제목을 입력해주세요">
-    </div>
-    <div>
-        내용
-        <textarea name="content" id="content" rows="4" cols="80" placeholder="내용을 입력해주세요">${dto.content}</textarea>
-    </div>
-    <div>
-        이름
-      <!--   <input name="writer" value="${dto.writer}" placeholder="이름을 입력해주세요"> -->        
-    </div>
-     ${dto.writer} 
-    <input type="hidden" name="writer" id="writer" value="${dto.bno}">
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<form role="form" name="form1" method="post">
+				<div class="form-group">
+					<label>
+						제목
+					</label>
+					<input name="title" id="title" size="80" value="${dto.title}" placeholder="제목을 입력해주세요">
+				</div>
+				<div class="form-group">
+					 
+					<label>
+						내용
+					</label>
+					<textarea name="content" id="content" rows="4" cols="80" placeholder="내용을 입력해주세요">${dto.content}</textarea>
+				</div>
+				<input type="hidden" name="writer" id="writer" value="${dto.bno}">
     <div style="width:650px; text-align: center;">
         <!-- 게시물번호를 hidden으로 처리 -->
         <input type="hidden" name="bno" value="${dto.bno}">
@@ -182,9 +192,10 @@
       </c:if>
       <button type="button" id="btnList">목록</button>
     </div>
-    
-</form>
-    <div style="width:600px; text-align:center;">
+			</form>
+		</div>
+	</div>
+ <div style="width:600px; text-align:center;">
     	<c:if test="${sessionScope.userId !=null }">
     		<textarea rows="5" cols="80" id="replytext" placeholder="댓글을 작성하세요"></textarea><br>
     		<button type="button" id="btnReply">댓글 쓰기</button>
@@ -199,6 +210,8 @@
     
     </div>
     
+    
+</div>
     
     
 </body>

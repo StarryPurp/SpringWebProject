@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="${pageContext.request.contextPath }/resources/css/bootstrap.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/others.css" rel="stylesheet">
 <title>Insert title here</title>
 <%@ include file="../include/member_header.jsp" %>
 </head>
@@ -13,21 +14,26 @@
 	<c:forEach var="row" items="${list}">
 	<tr>
 		<td>
-		${row.userName }(<fmt:formatDate value="${row.regdate }" pattern="yyyy-MM-dd HH:mm:ss"/>)
+		${row.userName}
+		(<fmt:formatDate value="${row.regdate }" 
+		pattern="yyyy-MM-dd HH:mm:ss"/>)
 		<br>
 		${row.replytext }
 		
 		<br>
 		<c:if test="${sessionScope.userId==row.replyer }">
-			<input type="button" id="btnModify" value="수정" onclick="showReplyModify('${row.rno}')">
+			<input type="button" id="btnModify" value="수정" 
+			onclick="showReplyModify('${row.rno}')">
 		</c:if>
 		<hr>
 	</td>
 	</tr>
 	</c:forEach>
-	<div id="modifyReply"></div>
+	
 
 </table>
+
+<div id="modifyReply"></div>
 
 </body>
 </html>

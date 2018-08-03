@@ -4,6 +4,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="${pageContext.request.contextPath }/resources/css/bootstrap.css" rel="stylesheet">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/skel.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style-xlarge.css" />
+<link href="${pageContext.request.contextPath }/resources/css/others.css" rel="stylesheet">
 <title>게시글 작성</title>
 <%@ include file="../include/member_header.jsp" %>
 
@@ -54,15 +58,14 @@
 		<div class="col-md-12">
 			<form role="form" name="form1" method="post" action="${path}/board/insert.do">
 				<div class="form-group">
-					 
-					<label for="exampleInputEmail1">
+					<label>
 						제목
 					</label>
 					<input name="title" id="title" size="80" placeholder="제목을 입력해주세요">
 				</div>
 				<div class="form-group">
 					 
-					<label for="exampleInputPassword1">
+					<label>
 						내용
 					</label>
 					<textarea name="content" id="content" rows="4" cols="80" placeholder="내용을 입력해주세요"></textarea>
